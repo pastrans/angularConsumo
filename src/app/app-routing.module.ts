@@ -17,7 +17,7 @@ const routes: Routes =[
   {path: 'articulo/agregar',  component: ArticuloComponent},
   {path: 'articulo/editar/:id',  component: ArticuloComponent},
   {path: 'articulos',  component: ArticulosComponent},
-  {path: '**', pathMatch: 'full', redirectTo :'reactivos' }
+  {path: '**', pathMatch: 'full', redirectTo :'home' }
 ];
 @NgModule( {
   imports: [RouterModule.forRoot(routes)],

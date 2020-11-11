@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AutorComponent } from './components/autor/autor.component';
 import { ArticuloComponent } from './components/articulo/articulo.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ArticuloComponent } from './components/articulo/articulo.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

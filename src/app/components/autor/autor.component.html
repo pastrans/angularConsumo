@@ -1,14 +1,32 @@
 
-<form >
+<form [formGroup] ="formulario"  (ngSubmit)="guardar()">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label >Nombre</label>
-      <input type="email" class="form-control" id="inputEmail4">
+      <input
+            type="text"
+            class="form-control is-invalid"
+            d="inputEmail4"
+            formControlName="nombre"
+            [class.is-invalid]="nombreInvaldio"
+      >
     </div>
     <div class="form-group col-md-6">
       <label >Apellido</label>
-      <input type="password" class="form-control" id="inputPassword4">
+      <input
+            type="text"
+            class="form-control "
+            id="inputPassword4"
+            formControlName="apellido"
+            [class.is-invalid]="apellidoInvaldio"
+      >
     </div>
   </div>
-  {{autor.apellido}}
+  <div class="d-flex justify-content-center">
+    <button *ngIf="esEditar" type="submit" class="btn btn-outline-success">Actualizar</button>
+    <button *ngIf="!esEditar" type="submit" class="btn btn-outline-primary">Guardar</button>
+  </div>
+
+
 </form>
+
