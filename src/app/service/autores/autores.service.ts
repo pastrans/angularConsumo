@@ -7,20 +7,23 @@ import { HttpClient } from '@angular/common/http';
 export class AutoresService {
 
   constructor( private http: HttpClient) {
-    // tslint:disable-next-line: quotemark
-    console.log("todo bien ");
+
   }
 
   getQuery( query: string ): any {
 
-    const url = `http://127.0.0.1:8000/${ query }`;
+    const url = `http://127.0.0.1:8000/api/${ query }`;
 
     return this.http.get(url);
   }
 
   getAutores(): any {
-    return this.getQuery('api/autors');
+    return this.getQuery('autors');
   }
+  getAutor( id :string): any {
+    return this.getQuery(`autors/${id}`);
+  }
+
 
 
 }
