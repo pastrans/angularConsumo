@@ -1,7 +1,7 @@
 
 export class Autor {
 
-  id: string;
+  id: number;
   nombre: string;
   apellido: string;
 

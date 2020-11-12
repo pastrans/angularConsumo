@@ -1,4 +1,10 @@
 
+<div *ngIf="mensaje" class="alert alert-info   alert-dismissible fade show" role="alert">
+  Autor guardado exitosamente
+  <button (click)="ocultar()" type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <form [formGroup] ="formulario"  (ngSubmit)="guardar()">
   <div class="form-row">
     <div class="form-group col-md-6">

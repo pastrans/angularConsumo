@@ -13,6 +13,7 @@ export class AutorComponent implements OnInit {
   autor:Autor = new Autor();
   formulario:FormGroup;
   esEditar : boolean = true;
+  mensaje ;boolean =false;
   constructor( private autoresService: AutoresService,
                private route: ActivatedRoute,
                private fb : FormBuilder,
@@ -58,12 +59,22 @@ export class AutorComponent implements OnInit {
         }
      })
    }
-   if(this.esEditar){
-    this.autoresService.ActualizarAutor( this.valoresForm());
+   if(this.esEditar){this.autoresService.ActualizarAutor( this.valoresForm())
+      .subscribe(
+        respuesta =>{
+        this.mensaje = true;
+        }
+       );
+   }else{
+    this.autoresService.agregarAutor( this.valoresForm()).subscribe( );
+    this.autor = new Autor();
+    this.crearFormulario();
+    this.mensaje = true;
    }
-    this.autoresService.agregarAutor( this.valoresForm()).subscribe(
 
-    );
+  }
+  ocultar(){
+    this.mensaje =false;
   }
 
   valoresForm() : Autor{

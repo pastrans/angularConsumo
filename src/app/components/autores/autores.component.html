@@ -1,5 +1,5 @@
 <button routerLink="/autor/agregar" class=" btn btn-primary"> Agregar</button>
-<table class="table table-striped">
+<table *ngIf="!cargando" class="table table-striped">
   <thead class="">
       <tr>
           <th scope="col"> Nombre</th>
@@ -8,13 +8,35 @@
       </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let autor of autores; let i ">
+      <tr *ngFor="let autor of autores; let i = index ">
           <td> {{autor.nombre}} </td>
           <td> {{autor.apellido}} </td>
           <td>
             <button [routerLink]="['/autor/editar/', autor.id] " class="btn btn-outline-primary mx-1"> Editar</button>
-            <button class="btn btn-outline-danger"> eliminar</button>
+            <button data-toggle="modal" data-target="#exampleModal" (click)="cargar(autor, i)" class="btn btn-outline-danger"> eliminar</button>
           </td>
       </tr>
   </tbody>
 </table>
+<p *ngIf="cargando">Cargando la data</p>
+<p *ngIf="!cargando && autores.length == 0">No hay registros</p>
+<!-- Modal -->
+<div class="mt-5 modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">¡Desea eliminar este registro!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> {{autorCargado.nombre }} {{autorCargado.apellido}} </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button (click)="eliminar()" data-dismiss="modal" type="button" class="btn btn-primary">Eliminar </button>
+      </div>
+    </div>
+  </div>
+</div>
